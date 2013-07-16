@@ -83,7 +83,7 @@ public class ImplementationGenerator extends SourceGenerator {
     protected void defineMethods() throws Exception {
         int pos = 0;
         for (Method m : cls().getMethods()) {
-            if (m.isSynthetic())
+            if (m.isSynthetic() || m.getDeclaringClass().isInterface())
                 continue;
 
             Class<?> returns = m.getReturnType();

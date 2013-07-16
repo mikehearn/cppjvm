@@ -208,6 +208,11 @@ public class CppWrap {
             println("Nested classes of: " + cls.getName());
             getRequiredTypes(c, required, minDepths, currentDepth); // same depth
         }
+
+        for (Field f : cls.getFields()) {
+            println("Field " + cls.getName() + "." + f.getName());
+            getRequiredTypes(f.getType(), required, minDepths, currentDepth + 1);
+        }
     }
 
     public static void getAllRequiredTypes(Class<?> cls, Set<Class<?>> required) {
@@ -215,7 +220,6 @@ public class CppWrap {
     }
 
     public static Iterable<Class<?>> getDirectlyRequiredTypes(Class<?> cls) {
-    
         println("Directly required types for: " + cls.getName());
     
         HashSet<Class<?>> req = new HashSet<Class<?>>();

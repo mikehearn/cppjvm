@@ -1,4 +1,4 @@
-
+    
 package com.earwicker.cppjvm.cppwrap;
 
 import java.lang.reflect.*;
@@ -115,7 +115,7 @@ public class HeaderGenerator extends SourceGenerator {
 
     protected void declareMethods() throws Exception {
         for (Method m : cls().getMethods()) {
-            if (m.isSynthetic())
+            if (m.isSynthetic() || m.getDeclaringClass().isInterface())
                 continue;
 
             // [static] return-type methodName(params...) [const];
