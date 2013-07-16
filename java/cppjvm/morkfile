@@ -3,22 +3,14 @@ $(this)_requires = jniutil cppwrap
 
 # The list of Java classes we want to access from C++
 $(this)_input_classes =                 \
-	java.util.regex.MatchResult         \
-	java.util.regex.Matcher             \
-	java.util.regex.Pattern             \
 	java.lang.System                    \
-	java.io.ByteArrayOutputStream       \
-	java.util.TimeZone                  \
-	java.text.DateFormat				\
-	java.text.SimpleDateFormat          \
-	java.sql.DriverManager				\
-	java.sql.Types						\
 	java.lang.Character					\
 	java.lang.Short						\
 	java.lang.Integer					\
 	java.lang.Long						\
 	java.lang.Float						\
 	java.lang.Double					\
+	com.google.bitcoin.kits.WalletAppKit
 
 # Use the cppwrap tool
 $(this)_cppwrap = bash java/cppwrap/cppwrap.sh java/cppjvm/gen $($(this)_input_classes)
