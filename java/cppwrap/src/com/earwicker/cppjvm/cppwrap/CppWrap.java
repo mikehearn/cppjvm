@@ -38,6 +38,23 @@ public class CppWrap {
         primitives.put(char.class, "jchar");
     }
 
+    public static boolean skipMethod(Class<?> cls, Method m) {
+        if (m.isSynthetic()) 
+            return true;
+
+        // Horrible horrible hack to work around the fact that the protobuf
+        // library uses tons of return type covariance.
+        if (m.getDeclaringClass().getPackage().getName().startsWith("com.google.protobuf"))
+            return true;
+        if (m.getName().equals("clone"))
+            return true;
+        if (m.getDeclaringClass().getPackage().getName().equals("com.google.bitcoin.params") && 
+            m.getName().equals("get"))
+            return true;
+        
+        return !cls.isInterface() && m.getDeclaringClass().isInterface();
+    }
+
     public static String nestedName(Class<?> cls, boolean namespace) {
         
         String name = cls.getSimpleName();

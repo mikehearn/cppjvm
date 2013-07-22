@@ -115,7 +115,7 @@ public class HeaderGenerator extends SourceGenerator {
 
     protected void declareMethods() throws Exception {
         for (Method m : cls().getMethods()) {
-            if (m.isSynthetic() || m.getDeclaringClass().isInterface())
+            if (CppWrap.skipMethod(cls(), m))
                 continue;
 
             // [static] return-type methodName(params...) [const];
