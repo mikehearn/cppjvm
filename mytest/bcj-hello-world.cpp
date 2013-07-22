@@ -32,7 +32,7 @@ public:
 		std::cout << "We got some moneyzzz!! Received " << (newBalance - prevBalance) << " satoshis" << std::endl;
 	}
 
-	virtual void onKeysAdded(Wallet &wallet, java::util::AbstractList &keys) {
+	virtual void onKeysAdded(Wallet &wallet, java::util::List &keys) {
 		// Callbacks run on the user thread (see bitcoinj documentation)
 		std::cout << "Someone added " << keys.size() << " keys" << std::endl;
 	}

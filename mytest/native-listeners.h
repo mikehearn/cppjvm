@@ -8,7 +8,7 @@
 #include <jvm/object.hpp>
 #include <jvm/global.hpp>
 
-#include <java/util/AbstractList.hpp>
+#include <java/util/List.hpp>
 #include <com/google/bitcoin/core/Wallet.hpp>
 #include <com/google/bitcoin/core/Transaction.hpp>
 #include <com/google/bitcoin/jni/NativeWalletEventListener.hpp>
@@ -32,7 +32,7 @@ public:
 	}
 
 	virtual void onCoinsReceived(Wallet &wallet, Transaction &tx, long prevBalance, long newBalance) {};
-	virtual void onKeysAdded(Wallet &wallet, java::util::AbstractList &keys) {};
+	virtual void onKeysAdded(Wallet &wallet, java::util::List &keys) {};
 
 	// ... etc ...
 };

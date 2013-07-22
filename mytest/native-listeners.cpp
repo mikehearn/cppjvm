@@ -57,8 +57,7 @@ void JNICALL Wallet_onKeysAdded(JNIEnv *env, jobject self, jobject wallet, jobje
     // Wrap with CPPJVM wrapper objects to make them more C++like.
     NativeWalletEventListener self_(self);
     Wallet wallet_(wallet);
-    // TODO: Huh? Why can't we use the interface here...
-    java::util::AbstractList keys_(keys);
+    java::util::List keys_(keys);
 
     // Must use a C style cast here as we're doing a cast from a "jlong" (i.e. long) to a C++ object pointer.
     native::WalletEventListener *listener = (native::WalletEventListener*)self_.get_ptr();
