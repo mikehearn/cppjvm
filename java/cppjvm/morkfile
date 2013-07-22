@@ -1,7 +1,7 @@
 $(this)_type = static
 $(this)_requires = jniutil cppwrap
 
-# The list of Java classes we want to access from C++
+# The list of Java classes we want to access from C++. The ones outside java.lang are for the cppjvm unit tests.
 $(this)_input_classes =                 \
 	java.lang.System                    \
 	java.lang.Character					\
@@ -10,7 +10,16 @@ $(this)_input_classes =                 \
 	java.lang.Long						\
 	java.lang.Float						\
 	java.lang.Double					\
-	com.google.bitcoin.kits.WalletAppKit
+	java.io.ByteArrayOutputStream       \
+	java.util.regex.Pattern             \
+	com.google.bitcoin.kits.WalletAppKit \
+	com.google.bitcoin.params.MainNetParams \
+	com.google.bitcoin.params.TestNet3Params \
+	com.google.bitcoin.params.RegTestParams \
+	com.google.bitcoin.params.UnitTestParams \
+	com.google.bitcoin.core.Utils \
+	com.google.bitcoin.utils.BriefLogFormatter \
+	com.google.bitcoin.jni.NativeWalletEventListener
 
 # Use the cppwrap tool
 $(this)_cppwrap = bash java/cppwrap/cppwrap.sh java/cppjvm/gen $($(this)_input_classes)

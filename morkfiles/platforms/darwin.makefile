@@ -1,6 +1,6 @@
 
 cpp_tool = g++
-cpp_flags = -c -DPOSIX -g -O0 -fno-inline -MD -MP -fPIC -m32
+cpp_flags = -c -DPOSIX -g -O0 -fno-inline -MD -MP -fPIC 
 # We generate dependencies at same time as compiling (-MD)
 cpp_generate_dependencies = 
 cpp_output = -o 
@@ -20,8 +20,8 @@ shared_output_prefix =
 shared_output_suffix = .so
 shared_output_link = $(1)
 
-exe_tool = g++ -m32
-exe_flags = 
+exe_tool = g++
+exe_flags = -L/Library/Java/JavaVirtualMachines/jdk1.7.0_15.jdk/Contents/Home/jre/lib/server/ -ljvm -Wl,-rpath -Wl,/Library/Java/JavaVirtualMachines/jdk1.7.0_15.jdk/Contents/Home/jre/lib/server/
 exe_output = -o  
 exe_output_dir = bin
 exe_output_suffix =

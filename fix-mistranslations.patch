@@ -1,0 +1,32 @@
+--- java/cppjvm/gen/include/com/google/bitcoin/params/RegTestParams.hpp.old	2013-07-22 11:17:11.000000000 +0200
++++ java/cppjvm/gen/include/com/google/bitcoin/params/RegTestParams.hpp	2013-07-22 11:17:12.000000000 +0200
+@@ -63,7 +63,6 @@
+     static ::com::google::bitcoin::params::RegTestParams get();
+     ::com::google::bitcoin::core::Block getGenesisBlock() const;
+     jboolean allowEmptyPeerChain() const;
+-    static ::com::google::bitcoin::params::TestNet2Params get();
+     jboolean equals(const ::java::lang::Object &args1) const;
+     jint hashCode() const;
+     jint getPort() const;
+--- java/cppjvm/gen/com_google_bitcoin_params_RegTestParams.cpp.old	2013-07-22 11:15:11.000000000 +0200
++++ java/cppjvm/gen/com_google_bitcoin_params_RegTestParams.cpp	2013-07-22 11:16:41.000000000 +0200
+@@ -92,19 +92,6 @@
+     ::jvm::global_vm().check_exception(env);
+     return jboolean(ret);
+ }
+-::com::google::bitcoin::params::TestNet2Params RegTestParams::get()
+-{
+-    JNIEnv *env = ::jvm::global_vm().env();
+-    jmethodID i = cached_methods0[3];
+-    if (i == 0)
+-    {
+-        i = env->GetStaticMethodID(get_class(), "get", "()Lcom/google/bitcoin/params/TestNet2Params;");
+-        cached_methods0[3] = i;
+-    }
+-    ::com::google::bitcoin::params::TestNet2Params ret(env->CallStaticObjectMethod(get_class(), i));
+-    ::jvm::global_vm().check_exception(env);
+-    return ret;
+-}
+ jboolean RegTestParams::equals(const ::java::lang::Object &args1) const
+ {
+     JNIEnv *env = ::jvm::global_vm().env();
