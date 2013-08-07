@@ -9,9 +9,13 @@
 #include <jvm/global.hpp>
 
 #include <java/util/List.hpp>
+#include <java/net/SocketAddress.hpp>
 #include <com/google/bitcoin/core/Wallet.hpp>
 #include <com/google/bitcoin/core/Transaction.hpp>
+#include <com/google/bitcoin/protocols/channels/PaymentChannelCloseException.hpp>
 #include <com/google/bitcoin/jni/NativeWalletEventListener.hpp>
+#include <com/google/bitcoin/jni/NativePaymentChannelServerConnectionEventHandler.hpp>
+#include <com/google/bitcoin/jni/NativePaymentChannelHandlerFactory.hpp>
 
 using namespace com::google::bitcoin::core;
 using namespace com::google::bitcoin::jni;
@@ -35,6 +39,34 @@ public:
 	virtual void onKeysAdded(Wallet &wallet, java::util::List &keys) {};
 
 	// ... etc ...
+};
+
+class PaymentChannelServerConnectionEventHandler {
+public:
+	jvm::global<NativePaymentChannelServerConnectionEventHandler> peer;
+
+	// Constructs a new PaymentChannelServerListener with a Java-side peer, that can then be added to a Wallet object.
+	PaymentChannelServerConnectionEventHandler() {
+		peer = jvm::jnew<NativePaymentChannelServerConnectionEventHandler>();
+		peer.set_ptr((jlong)this);
+	}
+
+	virtual void channelOpen(Sha256Hash channelId) {};
+	virtual void paymentIncrease(java::math::BigInteger by, java::math::BigInteger to) {};
+	virtual void channelClosed(com::google::bitcoin::protocols::channels::PaymentChannelCloseException_n::CloseReason reason) {};
+};
+
+class PaymentChannelHandlerFactory {
+public:
+	jvm::global<NativePaymentChannelHandlerFactory> peer;
+
+	// Constructs a new PaymentChannelServerListener with a Java-side peer, that can then be added to a Wallet object.
+	PaymentChannelHandlerFactory() {
+		peer = jvm::jnew<NativePaymentChannelHandlerFactory>();
+		peer.set_ptr((jlong)this);
+	}
+
+	virtual PaymentChannelServerConnectionEventHandler* onNewConnection(java::net::SocketAddress clientAddress) {};
 };
 
 }  // namespace native
