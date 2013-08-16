@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 {
 	try
 	{
-		create_global_vm("bitcoinj-tools-0.10-SNAPSHOT.jar");
+		create_global_vm("bitcoinj-tools-0.11-SNAPSHOT.jar");
 	}
 	catch (const std::exception &e)
 	{

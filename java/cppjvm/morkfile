@@ -10,16 +10,29 @@ $(this)_input_classes =                 \
 	java.lang.Long						\
 	java.lang.Float						\
 	java.lang.Double					\
+	java.math.BigInteger \
 	java.io.ByteArrayOutputStream       \
+	java.net.Inet4Address \
+	java.net.InetSocketAddress \
 	java.util.regex.Pattern             \
 	com.google.bitcoin.kits.WalletAppKit \
 	com.google.bitcoin.params.MainNetParams \
 	com.google.bitcoin.params.TestNet3Params \
 	com.google.bitcoin.params.RegTestParams \
 	com.google.bitcoin.params.UnitTestParams \
+	com.google.bitcoin.protocols.channels.PaymentChannelServerListener \
 	com.google.bitcoin.core.Utils \
+	com.google.bitcoin.core.NetworkParameters \
+	com.google.bitcoin.core.PeerAddress \
 	com.google.bitcoin.utils.BriefLogFormatter \
-	com.google.bitcoin.jni.NativeWalletEventListener
+	com.google.bitcoin.jni.NativeWalletEventListener \
+	com.google.bitcoin.jni.NativePaymentChannelServerConnectionEventHandler \
+	com.google.bitcoin.jni.NativePaymentChannelHandlerFactory \
+	com.google.bitcoin.protocols.channels.PaymentChannelCloseException \
+	com.google.bitcoin.protocols.channels.PaymentChannelServer \
+	com.google.bitcoin.networkabstraction.ProtobufParser \
+	com.google.bitcoin.networkabstraction.StreamParserFactory \
+	com.google.bitcoin.networkabstraction.NioServer \
 
 # Use the cppwrap tool
 $(this)_cppwrap = bash java/cppwrap/cppwrap.sh java/cppjvm/gen $($(this)_input_classes)
