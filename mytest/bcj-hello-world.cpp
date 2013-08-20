@@ -1,6 +1,5 @@
 // Notes:
-//  - Compile until you hit the unit tests which are expected to fail (took out the classes they need)
-//  - ExtensionRegistry won't compile due to static method return type covariance. just delete the lite versions of the overloaded methods.
+//  - running make the first time will fail with a missing header. running it again will succeed, for some reason.
 //  - Command below produces a working executable. will require special rpath to be bundled into a .app
 //
 // Mac:
