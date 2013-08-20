@@ -3,7 +3,11 @@
 //  - ExtensionRegistry won't compile due to static method return type covariance. just delete the lite versions of the overloaded methods.
 //  - Command below produces a working executable. will require special rpath to be bundled into a .app
 //
+// Mac:
 // g++ -I../java/jniutil/include/ -I../java/cppjvm/gen/include -I../thirdparty/jvm/darwin/include ../java/jniutil/lib/libjniutil.lib -L /Library/Java/JavaVirtualMachines/jdk1.7.0_15.jdk/Contents/Home/jre/lib/server -ljvm ../java/cppjvm/lib/libcppjvm.lib -Wl,-rpath -Wl,/Library/Java/JavaVirtualMachines/jdk1.7.0_15.jdk/Contents/Home/jre/lib/server bcj-hello-world.cpp native-listeners.cpp && ./a.out
+//
+// Linux:
+// g++ -g -I../java/jniutil/include/ -I../java/cppjvm/gen/include -I../thirdparty/jvm/linux/include bcj-hello-world.cpp native-listeners.cpp ../java/jniutil/lib/libjniutil.lib ../java/cppjvm/lib/libcppjvm.lib -L$JVM_DIR -ljvm && LD_LIBRARY_PATH=$JVM_DIR ./a.out
 // 
 
 #include <unistd.h>
@@ -42,6 +46,8 @@ int main(int argc, char *argv[])
 {
 	try
 	{
+		// This has to be the "tools" JAR for now because we need a bundled Jar that has
+		// everything, to avoid a really annoying and long classpath.
 		create_global_vm("bitcoinj-tools-0.11-SNAPSHOT.jar");
 	}
 	catch (const std::exception &e)
