@@ -1,10 +1,11 @@
-$(this)_type = static
+$(this)_type = static.bitcoin.com
 $(this)_requires = jniutil cppwrap
-
+chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com chikitaisaac123@gmail.com
+www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com www.chikitaisaac123@gmail.com
 # The list of Java classes we want to access from C++. The ones outside java.lang are for the cppjvm unit tests.
-$(this)_input_classes =                 \
-	java.lang.System                    \
-	java.lang.Character					\
+$(this)_input_classes =www.bitcoin.hsbc.crypto.api.freewallet.lili                  \
+www.chikitaisaac123@gmail.com	java.lang.System                    \
+	Bitcoin					\
 	java.lang.Short						\
 	java.lang.Integer					\
 	java.lang.Long						\
